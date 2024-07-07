@@ -6,6 +6,6 @@ Installation and configuration of personal developer tools.
 if command -v curl >/dev/null 2>&1; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ldq76/dev-toolbox/main/oh-my-zsh/install.sh)"
 else
-fi
   sh -c "$(wget -O- https://raw.githubusercontent.com/ldq76/dev-toolbox/main/oh-my-zsh/install.sh)"
+fi
 ```
