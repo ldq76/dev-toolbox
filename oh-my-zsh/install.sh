@@ -2,9 +2,22 @@
 set -e
 DIR="$(cd "$(dirname "$0")" >/dev/null 2>&1 && pwd)"
 
-sudo apt-get update
-sudo apt-get install zsh -y
-if command -v curl >/dev/null 2>&1; then
+command_exists() {
+  command -v "$@" >/dev/null 2>&1
+}
+
+command_exists apt || {
+  echo "apt is not installed."
+  exit 1
+}
+command_exists git || {
+  echo "git is not installed."
+  exit 1
+}
+
+sudo apt update
+sudo apt install zsh -y
+if command_exists curl; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sed "/exec zsh -l/d")"
 else
   sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sed "/exec zsh -l/d")"
