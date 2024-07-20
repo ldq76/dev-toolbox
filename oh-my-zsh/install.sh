@@ -33,5 +33,5 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting --depth=1
 git clone https://github.com/agkozak/zsh-z ${ZSH_CUSTOM}/plugins/zsh-z --depth=1
 
-echo "$(curl -fsSL https://raw.githubusercontent.com/ldq76/dev-toolbox/main/oh-my-zsh/.zshrc)" > ~/.zshrc
+echo "$(curl -fsSL https://raw.githubusercontent.com/li-daqian/dev-toolbox/main/oh-my-zsh/.zshrc)" > ~/.zshrc
 exec zsh -l
