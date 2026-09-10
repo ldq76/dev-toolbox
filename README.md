@@ -100,7 +100,19 @@ curl -fsSL "https://raw.githubusercontent.com/li-daqian/dev-toolbox/main/ubuntu/
 ./scripts/install-agent-setup.sh setup --profile work --dry-run
 ```
 
-`personal` profile 显式固定 upstream promoted 的 25 个 engineering/productivity skills；`work` profile 只包含 `grilling`、`grill-me` 和 `diagnosing-bugs`。普通运行跟随 `mattpocock/skills` 的 `main`，但 upstream 新增目录不会自动进入 manifest。
+`personal` profile 显式固定 upstream promoted 的 25 个 engineering/productivity skills；`work` profile 包含以下 10 个，个人版也包含这些 skills：
+
+- 讨论与诊断：`grilling`、`grill-me`、`diagnosing-bugs`
+- 架构与领域设计：`codebase-design`、`domain-modeling`、`improve-codebase-architecture`
+- 交接、学习与文档：`handoff`、`teach`、`writing-for-agents`、`to-questionnaire`
+
+保留上游触发配置：`codebase-design`、`domain-modeling`、`writing-for-agents`（以及原有的 `grilling`、`diagnosing-bugs`）允许按任务自动触发；其余需要明确调用。`domain-modeling` 是架构改进讨论维护领域文档时使用的依赖。普通运行跟随 `mattpocock/skills` 的 `main`，但 upstream 新增目录不会自动进入 manifest。
+
+将工作版安装到本机 Codex 用户目录：
+
+```bash
+./scripts/install-agent-setup.sh skills --profile work --scope user --agent codex
+```
 
 Linux 可启用 user-scope systemd 定时更新；macOS、Windows Git Bash、WSL 无 systemd 的环境手动重跑即可：
 

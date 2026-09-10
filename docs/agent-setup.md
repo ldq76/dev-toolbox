@@ -16,8 +16,17 @@ Skill selection and installation location are independent dimensions:
 
 The `personal` manifest contains the explicitly reviewed upstream promoted
 `engineering` and `productivity` skills. The smaller `work` manifest contains
-`grilling`, `grill-me`, and `diagnosing-bugs`. New upstream skills never enter a
-profile merely because a directory appeared upstream.
+10 skills: `grilling`, `grill-me`, `diagnosing-bugs`, `codebase-design`,
+`domain-modeling`, `improve-codebase-architecture`, `handoff`, `teach`,
+`writing-for-agents`, and `to-questionnaire`. All ten are also in `personal`.
+`domain-modeling` supports the domain-document updates used by architecture
+discussions. New upstream skills never enter a profile merely because a
+directory appeared upstream.
+
+Both profiles preserve upstream invocation policies. `codebase-design`,
+`domain-modeling`, and `writing-for-agents` allow implicit invocation, as do the
+existing `grilling` and `diagnosing-bugs`. The other five work-profile skills
+require explicit invocation. The installer does not patch skill metadata.
 
 Instructions are deliberately not profile- or project-specific. They are
 installed only at user scope:
