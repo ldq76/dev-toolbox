@@ -93,7 +93,7 @@ git -C "$PROJECT_DIR" init -q
 personal_count="$(grep -Ev '^[[:space:]]*(#|$)' "$REPO_ROOT/agent/skills/mattpocock-personal.txt" | wc -l | tr -d ' ')"
 work_count="$(grep -Ev '^[[:space:]]*(#|$)' "$REPO_ROOT/agent/skills/mattpocock-work.txt" | wc -l | tr -d ' ')"
 [[ "$personal_count" == "25" ]] || fail_test "personal manifest should contain 25 skills"
-[[ "$work_count" == "10" ]] || fail_test "work manifest should contain 10 skills"
+[[ "$work_count" == "11" ]] || fail_test "work manifest should contain 11 skills"
 
 bash "$INSTALLER" --help >/dev/null
 bash "$INSTALLER" instructions --stdout | cmp - "$REPO_ROOT/agent/global-instructions.md"
@@ -147,12 +147,12 @@ assert_absent "$CODEX_USER_DIR/git-guardrails-claude-code"
 
 run_skills --profile work --scope user --agent both >/dev/null
 for skill_name in grilling grill-me diagnosing-bugs codebase-design domain-modeling \
-  improve-codebase-architecture handoff teach writing-for-agents to-questionnaire; do
+  grill-with-docs improve-codebase-architecture handoff teach writing-for-agents to-questionnaire; do
   assert_managed_entry "$CODEX_USER_DIR/$skill_name"
   assert_managed_entry "$CLAUDE_USER_DIR/$skill_name"
 done
 assert_absent "$CODEX_USER_DIR/ask-matt"
-assert_absent "$CLAUDE_USER_DIR/grill-with-docs"
+assert_absent "$CLAUDE_USER_DIR/code-review"
 
 # Project scope reuses exact user-scope entries and installs the remainder at Git root.
 run_skills --profile personal --scope project --agent both --project "$PROJECT_DIR" >/dev/null
@@ -227,7 +227,8 @@ LEGACY_USER_DIR="$TEST_ROOT/legacy-user-skills"
 bash "$LEGACY_SKILLS" work --source-dir "$SOURCE_DIR" --user-skills-dir "$LEGACY_USER_DIR" >/dev/null
 assert_managed_entry "$LEGACY_USER_DIR/grilling"
 assert_managed_entry "$LEGACY_USER_DIR/domain-modeling"
-assert_absent "$LEGACY_USER_DIR/grill-with-docs"
+assert_managed_entry "$LEGACY_USER_DIR/grill-with-docs"
+assert_absent "$LEGACY_USER_DIR/code-review"
 
 LEGACY_PROJECT_DIR="$TEST_ROOT/legacy-project"
 mkdir -p "$LEGACY_PROJECT_DIR"

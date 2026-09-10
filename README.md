@@ -100,9 +100,9 @@ curl -fsSL "https://raw.githubusercontent.com/li-daqian/dev-toolbox/main/ubuntu/
 ./scripts/install-agent-setup.sh setup --profile work --dry-run
 ```
 
-`personal` profile 显式固定 upstream promoted 的 25 个 engineering/productivity skills；`work` profile 包含以下 10 个，个人版也包含这些 skills：
+`personal` profile 显式固定 upstream promoted 的 25 个 engineering/productivity skills；`work` profile 包含以下 11 个，个人版也包含这些 skills：
 
-- 讨论与诊断：`grilling`、`grill-me`、`diagnosing-bugs`
+- 讨论与诊断：`grilling`、`grill-me`、`grill-with-docs`、`diagnosing-bugs`
 - 架构与领域设计：`codebase-design`、`domain-modeling`、`improve-codebase-architecture`
 - 交接、学习与文档：`handoff`、`teach`、`writing-for-agents`、`to-questionnaire`
 
